@@ -27,6 +27,7 @@ public class CollectSensorMetrics {
     private float powerConsumption;
     private SensorManager mSensorManager;
     private Sensor mSensor;
+    private int sensorReportingMode;
 
     public CollectSensorMetrics(Context context){
         this.context = context;
@@ -101,6 +102,14 @@ public class CollectSensorMetrics {
             //powerConsumption = mSensor.getPower();
             powerConsumption = deviceSensors.get(i).getPower();
             Log.i("INFO ", "Power consumed by the sensor " + deviceSensors.get(i).getName() + " is: " + powerConsumption + " mA");
+        }
+    }
+
+    //Method to query sensor reporting mode
+    public void querySensorReportingMode(){
+        for(int i=0; i<deviceSensors.size(); i++){
+            sensorReportingMode = deviceSensors.get(i).getReportingMode();
+            Log.i("INFO ", "Sensor " + deviceSensors.get(i).getName() + " reporting mode is: " + sensorReportingMode);
         }
     }
 
